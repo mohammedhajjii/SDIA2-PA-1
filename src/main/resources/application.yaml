@@ -1,0 +1,15 @@
+
+server:
+  port: 8081
+
+spring:
+  application:
+    name: practical-activity-1
+  datasource:
+    url: jdbc:h2:mem:account-db
+  h2:
+    console:
+      enabled: true
+  data:
+    rest:
+      detection-strategy: annotated
