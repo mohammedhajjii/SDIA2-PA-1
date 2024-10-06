@@ -11,16 +11,9 @@ import org.springframework.web.bind.annotation.ExceptionHandler;
 @ControllerAdvice
 public class BankAccountExceptionHandler {
 
-
-    @ExceptionHandler({NegativeBalanceException.class})
-    public ResponseEntity<?> handlerNegativeBalanceException
-            (final NegativeBalanceException exception) {
-        return ResponseEntity.badRequest().body(exception.getMessage());
-    }
-
-
-    @ExceptionHandler({NullFieldException.class})
-    public ResponseEntity<?> handleNullFieldException(final NullFieldException exception) {
+    @ExceptionHandler({NegativeBalanceException.class, NullFieldException.class})
+    public ResponseEntity<?> handlerNegativeBalanceAndNullFieldException
+            (final RuntimeException exception) {
         return ResponseEntity.badRequest().body(exception.getMessage());
     }
 

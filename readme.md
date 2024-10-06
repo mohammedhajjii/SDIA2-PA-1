@@ -522,16 +522,9 @@ which be used for handle exceptions raised by `account-service` microservice:
 @ControllerAdvice
 public class BankAccountExceptionHandler {
 
-
-    @ExceptionHandler({NegativeBalanceException.class})
-    public ResponseEntity<?> handlerNegativeBalanceException
-            (final NegativeBalanceException exception) {
-        return ResponseEntity.badRequest().body(exception.getMessage());
-    }
-
-
-    @ExceptionHandler({NullFieldException.class})
-    public ResponseEntity<?> handleNullFieldException(final NullFieldException exception) {
+    @ExceptionHandler({NegativeBalanceException.class, NullFieldException.class})
+    public ResponseEntity<?> handlerNegativeBalanceAndNullFieldException
+            (final RuntimeException exception) {
         return ResponseEntity.badRequest().body(exception.getMessage());
     }
 
@@ -541,6 +534,7 @@ public class BankAccountExceptionHandler {
         return ResponseEntity.status(HttpStatus.NOT_FOUND).body(exception.getMessage());
     }
 }
+
 
 ```
 
